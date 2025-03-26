@@ -1,0 +1,68 @@
+<style>
+
+    /* Estilizando o menu superior */
+p {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #00bcd4;
+}
+
+button {
+    background-color: #e91e63;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #d81b60;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    p {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    a, button {
+        margin-top: 8px;
+    }
+}
+
+
+
+</style>
+
+<p>
+    <a href="{% url 'home' %}">Snake Lanches</a>
+    {% if user.is_authenticated %}
+        Olá, {{  user.username  }}
+        <button type="submit"><a href="/sair"> Sair </a></button>
+    {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+    {% endif %}      
+</p>
+{% block content %}{% endblock content %}
